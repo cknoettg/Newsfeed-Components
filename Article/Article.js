@@ -114,7 +114,7 @@ const data = [
 */
 
 //Refactored to take in a single object at a time
-function articleCreator(title,date,firstPara,secondPara,thirdPara) {
+function articleCreator(title,date,firstParagraph,secondParagraph,thirdParagraph) {
 
   let diver = document.createElement("div");
   diver.classList.add("article");
@@ -124,14 +124,15 @@ function articleCreator(title,date,firstPara,secondPara,thirdPara) {
   dates.classList.add("date");
   dates.textContent = date;
   let para = document.createElement("p");
-  para.textContent = firstPara;
+  para.textContent = firstParagraph;
   let para2 = document.createElement("p");
-  para2.textContent = secondPara;
+  para2.textContent = secondParagraph;
   let para3 = document.createElement("p");
-  para3.textContent = thirdPara;
+  para3.textContent = thirdParagraph;
   
   let spanner = document.createElement("span");
-  spanner.classList.add("expandButton");  
+  spanner.classList.add("expandButton"); 
+  spanner.textContent = "Click to Expand Article"; 
 
   diver.appendChild(headline);
   diver.appendChild(dates);
@@ -149,10 +150,18 @@ function articleCreator(title,date,firstPara,secondPara,thirdPara) {
 
 let articles = document.querySelector(".articles");
 
-data.map((component) => {
-  articles.appendChild(articleCreator(component.title,component.date,component.firstParagraph,component.secondParagraph,component.thirdParagraph));
-});
+// data.map((component) => {
+//   articles.appendChild(articleCreator(component.title,component.date,component.firstParagraph,component.secondParagraph,component.thirdParagraph));
+// });
 
 //add new article to array
 data.push({title: "my New Article",date: "March 14, 2020",firstParagraph:"dur dur dur",secondParagraph:"dur,dur,dur",thirdParagraph:"dur dur dur"});
-articles.appendChild(articleCreator(data[4].title,data[4].date,data[4].firstParagraph,data[4].secondParagraph,data[4].thirdParagraph));
+data.push({title: "my New Article2",date: "March 15, 2020",firstParagraph:"Smorkabork",secondParagraph:"dur,dur,dur",thirdParagraph:"dur dur dur"});
+data.push({title: "my New Article3",date: "March 16, 2020",firstParagraph:"This article takes place in the future",secondParagraph:"dur,dur,dur",thirdParagraph:"dur dur dur"});
+//articles.appendChild(articleCreator(data[4].title,data[4].date,data[4].firstParagraph,data[4].secondParagraph,data[4].thirdParagraph));
+//articles.appendChild(articleCreator(data[5].title,data[5].date,data[5].firstParagraph,data[5].secondParagraph,data[5].thirdParagraph));
+//articles.appendChild(articleCreator(data[6].title,data[6].date,data[6].firstParagraph,data[6].secondParagraph,data[6].thirdParagraph));
+
+data.map((component) => {
+  articles.appendChild(articleCreator(component.title,component.date,component.firstParagraph,component.secondParagraph,component.thirdParagraph));
+});
