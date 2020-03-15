@@ -131,6 +131,7 @@ function articleCreator(dataObj) {
 
   //add the elements to our div
   diver.appendChild(headline);
+  diver.appendChild(dates);
   diver.appendChild(para);
   diver.appendChild(para2);
   diver.appendChild(para3);
@@ -163,7 +164,7 @@ function articleCreator(dataObj) {
 
   //return our whole div, because it contains everything else
   return diver;
-}
+};
 
 //what is the parent of "article" that we are going to place this in?
 // It is the div "articles" in the html
@@ -177,5 +178,5 @@ data.map((component) => {
 //add new article to array
 //let newArticle = data.push({title: "my New Article",date: "March 14, 2020",firstParagraph:"dur dur dur",secondParagraph:"dur,dur,dur",thirdParagraph:"dur dur dur"});
 data.push({title: "my New Article",date: "March 14, 2020",firstParagraph:"dur dur dur",secondParagraph:"dur,dur,dur",thirdParagraph:"dur dur dur"});
-//articles.appendChild(articleCreator(data));
+articles.appendChild(articleCreator(data[4]));
 //articles.appendChild(articleCreator(newArticle));
