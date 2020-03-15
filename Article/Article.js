@@ -117,17 +117,39 @@ const data = [
 // It is the div "articles" in the html
 let articles = document.querySelector("articles");
 
-let diver = document.createElement("div");
-diver.addClassList("article");
-let headline = document.createElement("h2");
-let para = document.createElement("p");
-let para2 = document.createElement("p");
-let para3 = document.createElement("p");
-para.addClassList("date");
-para2.addClassList("date");
-para3.addClassList("date");
-let spanner = document.createElement("span");
-spanner.addClassList("expandButton");
-// function(data) {
+//create an article creator, like we did with our buttonCreator
+// will take object as its argument
+function articleCreator(dataObj) {
 
-// }
+  //move our elements into the function
+  let diver = document.createElement("div");
+  diver.addClassList("article");
+  let headline = document.createElement("h2");
+  let para = document.createElement("p");
+  let para2 = document.createElement("p");
+  let para3 = document.createElement("p");
+  para.addClassList("date");
+  para2.addClassList("date");
+  para3.addClassList("date");
+  let spanner = document.createElement("span");
+  spanner.addClassList("expandButton");
+
+  //add the elements to our div
+  diver.appendChild(headline);
+  diver.appendChild(para);
+  diver.appendChild(para2);
+  diver.appendChild(para3);
+  diver.appendChild(spanner);
+
+  //add data from our object to our elements - title, date, 1st, 2nd, 3rd
+  for(let i=0;i<dataObj.length;i++){
+    addTitle.textContent = dataObj.title[i];
+    addDate.textContent = dataObj.date[i];
+    addPara1.textContent = dataObj.firstParagraph[i];
+    addPara2.textContent = dataObj.secondParagraph[i];
+    addPara3.textContent = dataObj.thirdParagraph[i];
+  }
+
+  //return our whole div, because it contains everything else
+  return diver;
+}
