@@ -150,6 +150,7 @@ function articleCreator(title,date,firstPara,secondPara,thirdPara) {
 let articles = document.querySelector("articles");
 
 data.map((component) => {
+  //console.log(component.title);
   articles.appendChild(articleCreator(component.title,component.date,component.firstParagraph,component.secondParagraph,component.thirdParagraph));
 });
 
