@@ -35,11 +35,12 @@ let menuItems = [
 */
 function menuCreator(arr){
   let divers = document.createElement("div");
-  divers.addClassList("menu");
+  divers.classList.add("menu");
   let uli = document.createElement("ul");
   divers.appendChild(uli);
   for(let i=0;i<arr.length;i++){
-    let lis = document.createElement("li").textContent=arr[i];
+    let lis = document.createElement("li");
+    lis.textContent=arr[i];
     uli.appendChild(lis);
   }
   let menuButton = document.querySelector(".menu-button");
@@ -49,4 +50,4 @@ function menuCreator(arr){
   return divers;
 };
 
-document.createElement(menuCreator(menuItems));
+document.querySelector(".header").append(menuCreator(menuItems));
