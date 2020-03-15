@@ -113,23 +113,26 @@ const data = [
 
 */
 
-//create an article creator, like we did with our buttonCreator
-// will take object as its argument
-function articleCreator(dataObj) {
+//Refactored to take in a single object at a time
+function articleCreator(title,date,firstPara,secondPara,thirdPara) {
 
-  //move our elements into the function
   let diver = document.createElement("div");
   diver.addClassList("article");
   let headline = document.createElement("h2");
+  headline.textContent = title;
   let dates = document.createElement("p");
-  let para = document.createElement("p");
-  let para2 = document.createElement("p");
-  let para3 = document.createElement("p");
   dates.addClassList("date");
+  dates.textContent = date;
+  let para = document.createElement("p");
+  para.textContent = firstPara;
+  let para2 = document.createElement("p");
+  para2.textContent = secondPara;
+  let para3 = document.createElement("p");
+  para3.textContent = thirdPara;
+  
   let spanner = document.createElement("span");
-  spanner.addClassList("expandButton");
+  spanner.addClassList("expandButton");  
 
-  //add the elements to our div
   diver.appendChild(headline);
   diver.appendChild(dates);
   diver.appendChild(para);
@@ -137,46 +140,21 @@ function articleCreator(dataObj) {
   diver.appendChild(para3);
   diver.appendChild(spanner);
 
-  //add data from our object to our elements - title, date, 1st, 2nd, 3rd
-  // for(let i=0;i<dataObj.length;i++){
-  //   headline.textContent = dataObj[i].title;
-  //   dates.textContent = dataObj[i].date;
-  //   addPara1.textContent = dataObj[i].firstParagraph;
-  //   addPara2.textContent = dataObj[i].secondParagraph;
-  //   addPara3.textContent = dataObj[i].thirdParagraph;
-  // }
-  //we are performing the action on the element each time it is called, so
-  //  no need to loop - or was my original formulation right
-  headline.textContent = dataObj.title;
-  dates.textContent = dataObj.date;
-  addPara1.textContent = dataObj.firstParagraph;
-  addPara2.textContent = dataObj.secondParagraph;
-  addPara3.textContent = dataObj.thirdParagraph;
-
-  //add event listener to span - it will be click, because that will 
-  //  open the hamburger menu
   spanner.addEventListener("click", ()=> {
-    //since we want to toggle on article, we need to grab the whole div
-    // since we are toggling a different class name on these elements,
-    // we need to use toggle on classList
     diver.classList.toggle("article-open");
   });
 
-  //return our whole div, because it contains everything else
   return diver;
 };
 
-//what is the parent of "article" that we are going to place this in?
-// It is the div "articles" in the html
 let articles = document.querySelector("articles");
 
-//map over the data, adding each component to articles div
 data.map((component) => {
-  articles.appendChild(articleCreator(component));
+  articles.appendChild(articleCreator(component.title,component.date,component.firstParagraph,component.secondParagraph,component.thirdParagraph));
 });
 
 //add new article to array
 //let newArticle = data.push({title: "my New Article",date: "March 14, 2020",firstParagraph:"dur dur dur",secondParagraph:"dur,dur,dur",thirdParagraph:"dur dur dur"});
 data.push({title: "my New Article",date: "March 14, 2020",firstParagraph:"dur dur dur",secondParagraph:"dur,dur,dur",thirdParagraph:"dur dur dur"});
-articles.appendChild(articleCreator(data[4]));
+articles.appendChild(articleCreator(data[4].title,data[4].date,data[4].firstParagraph,data[4].secondParagraph,data[4].thirdParagraph));
 //articles.appendChild(articleCreator(newArticle));
