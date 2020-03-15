@@ -113,21 +113,15 @@ const data = [
 
 */
 
-//Test
-let test = document.createElement("h2");
-test.textContent = "This is a test";
-let headerX = document.getElementsByClassName("header");
-headerX.appendChild(test);
-
 //Refactored to take in a single object at a time
 function articleCreator(title,date,firstPara,secondPara,thirdPara) {
 
   let diver = document.createElement("div");
-  diver.addClassList("article");
+  diver.classList.add("article");
   let headline = document.createElement("h2");
   headline.textContent = title;
   let dates = document.createElement("p");
-  dates.addClassList("date");
+  dates.classList.add("date");
   dates.textContent = date;
   let para = document.createElement("p");
   para.textContent = firstPara;
@@ -137,7 +131,7 @@ function articleCreator(title,date,firstPara,secondPara,thirdPara) {
   para3.textContent = thirdPara;
   
   let spanner = document.createElement("span");
-  spanner.addClassList("expandButton");  
+  spanner.classList.add("expandButton");  
 
   diver.appendChild(headline);
   diver.appendChild(dates);
@@ -156,12 +150,9 @@ function articleCreator(title,date,firstPara,secondPara,thirdPara) {
 let articles = document.querySelector(".articles");
 
 data.map((component) => {
-  //console.log(component.title);
   articles.appendChild(articleCreator(component.title,component.date,component.firstParagraph,component.secondParagraph,component.thirdParagraph));
 });
 
 //add new article to array
-//let newArticle = data.push({title: "my New Article",date: "March 14, 2020",firstParagraph:"dur dur dur",secondParagraph:"dur,dur,dur",thirdParagraph:"dur dur dur"});
 data.push({title: "my New Article",date: "March 14, 2020",firstParagraph:"dur dur dur",secondParagraph:"dur,dur,dur",thirdParagraph:"dur dur dur"});
 articles.appendChild(articleCreator(data[4].title,data[4].date,data[4].firstParagraph,data[4].secondParagraph,data[4].thirdParagraph));
-//articles.appendChild(articleCreator(newArticle));
