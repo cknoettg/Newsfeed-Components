@@ -137,13 +137,20 @@ function articleCreator(dataObj) {
   diver.appendChild(spanner);
 
   //add data from our object to our elements - title, date, 1st, 2nd, 3rd
-  for(let i=0;i<dataObj.length;i++){
-    headline.textContent = dataObj[i].title;
-    dates.textContent = dataObj[i].date;
-    addPara1.textContent = dataObj[i].firstParagraph;
-    addPara2.textContent = dataObj[i].secondParagraph;
-    addPara3.textContent = dataObj[i].thirdParagraph;
-  }
+  // for(let i=0;i<dataObj.length;i++){
+  //   headline.textContent = dataObj[i].title;
+  //   dates.textContent = dataObj[i].date;
+  //   addPara1.textContent = dataObj[i].firstParagraph;
+  //   addPara2.textContent = dataObj[i].secondParagraph;
+  //   addPara3.textContent = dataObj[i].thirdParagraph;
+  // }
+  //we are performing the action on the element each time it is called, so
+  //  no need to loop - or was my original formulation right
+  headline.textContent = dataObj.title;
+  dates.textContent = dataObj.date;
+  addPara1.textContent = dataObj.firstParagraph;
+  addPara2.textContent = dataObj.secondParagraph;
+  addPara3.textContent = dataObj.thirdParagraph;
 
   //add event listener to span - it will be click, because that will 
   //  open the hamburger menu
@@ -164,11 +171,11 @@ let articles = document.querySelector("articles");
 
 //map over the data, adding each component to articles div
 data.map((component) => {
-  articles.appendChild(articleCreator(data));
+  articles.appendChild(articleCreator(component));
 });
 
 //add new article to array
 //let newArticle = data.push({title: "my New Article",date: "March 14, 2020",firstParagraph:"dur dur dur",secondParagraph:"dur,dur,dur",thirdParagraph:"dur dur dur"});
 data.push({title: "my New Article",date: "March 14, 2020",firstParagraph:"dur dur dur",secondParagraph:"dur,dur,dur",thirdParagraph:"dur dur dur"});
-articles.appendChild(articleCreator(data));
+//articles.appendChild(articleCreator(data));
 //articles.appendChild(articleCreator(newArticle));
