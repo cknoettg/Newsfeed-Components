@@ -102,7 +102,7 @@ const data = [
   Hint: You will need to use createElement more than once here!
 
   Your function should take either an object as it's one argument, or 5 separate arguments mapping to each piece of the data object above.
-
+  
   Step 2: Add an event listener to the expandButton span. This event listener should toggle the class 'article-open' on the 'article' div.
 
   Step 3: return the entire component.
@@ -112,3 +112,22 @@ const data = [
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
 
 */
+
+//what is the parent of "article" that we are going to place this in?
+// It is the div "articles" in the html
+let articles = document.querySelector("articles");
+
+let diver = document.createElement("div");
+diver.addClassList("article");
+let headline = document.createElement("h2");
+let para = document.createElement("p");
+let para2 = document.createElement("p");
+let para3 = document.createElement("p");
+para.addClassList("date");
+para2.addClassList("date");
+para3.addClassList("date");
+let spanner = document.createElement("span");
+spanner.addClassList("expandButton");
+// function(data) {
+
+// }
