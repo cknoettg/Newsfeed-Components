@@ -138,16 +138,16 @@ function articleCreator(dataObj) {
 
   //add data from our object to our elements - title, date, 1st, 2nd, 3rd
   for(let i=0;i<dataObj.length;i++){
-    headline.textContent = dataObj.title[i];
-    dates.textContent = dataObj.date[i];
-    addPara1.textContent = dataObj.firstParagraph[i];
-    addPara2.textContent = dataObj.secondParagraph[i];
-    addPara3.textContent = dataObj.thirdParagraph[i];
+    headline.textContent = dataObj[i].title;
+    dates.textContent = dataObj[i].date;
+    addPara1.textContent = dataObj[i].firstParagraph;
+    addPara2.textContent = dataObj[i].secondParagraph;
+    addPara3.textContent = dataObj[i].thirdParagraph;
   }
 
   //add event listener to span - it will be click, because that will 
   //  open the hamburger menu
-  spanner.addEventListener("click", (event)=> {
+  spanner.addEventListener("click", ()=> {
     //since we want to toggle on article, we need to grab the whole div
     // since we are toggling a different class name on these elements,
     // we need to use toggle on classList
@@ -163,9 +163,12 @@ function articleCreator(dataObj) {
 let articles = document.querySelector("articles");
 
 //map over the data, adding each component to articles div
-let newArr = data.map((component) => {
+data.map((component) => {
   articles.appendChild(articleCreator(data));
 });
 
 //add new article to array
-//newArr.appendChild;
+//let newArticle = data.push({title: "my New Article",date: "March 14, 2020",firstParagraph:"dur dur dur",secondParagraph:"dur,dur,dur",thirdParagraph:"dur dur dur"});
+data.push({title: "my New Article",date: "March 14, 2020",firstParagraph:"dur dur dur",secondParagraph:"dur,dur,dur",thirdParagraph:"dur dur dur"});
+articles.appendChild(articleCreator(data));
+//articles.appendChild(articleCreator(newArticle));
