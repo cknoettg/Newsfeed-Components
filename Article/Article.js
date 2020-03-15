@@ -113,6 +113,12 @@ const data = [
 
 */
 
+//Test
+let test = document.createElement("h2");
+test.textContent = "This is a test";
+let headerX = document.getElementsByClassName("header");
+headerX.appendChild(test);
+
 //Refactored to take in a single object at a time
 function articleCreator(title,date,firstPara,secondPara,thirdPara) {
 
@@ -147,7 +153,7 @@ function articleCreator(title,date,firstPara,secondPara,thirdPara) {
   return diver;
 };
 
-let articles = document.querySelector("articles");
+let articles = document.querySelector(".articles");
 
 data.map((component) => {
   //console.log(component.title);
