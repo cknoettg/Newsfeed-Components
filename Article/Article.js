@@ -150,6 +150,15 @@ function articleCreator(dataObj) {
     addPara3.textContent = dataObj.thirdParagraph[i];
   }
 
+  //add event listener to span - it will be click, because that will 
+  //  open the hamburger menu
+  spanner.addEventListener("click", (event)=> {
+    //since we want to toggle on article, we need to grab the whole div
+    // since we are toggling a different class name on these elements,
+    // we need to use toggle on classList
+    diver.classList.toggle("article-open");
+  });
+
   //return our whole div, because it contains everything else
   return diver;
 }
