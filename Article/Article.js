@@ -113,10 +113,6 @@ const data = [
 
 */
 
-//what is the parent of "article" that we are going to place this in?
-// It is the div "articles" in the html
-let articles = document.querySelector("articles");
-
 //create an article creator, like we did with our buttonCreator
 // will take object as its argument
 function articleCreator(dataObj) {
@@ -125,12 +121,11 @@ function articleCreator(dataObj) {
   let diver = document.createElement("div");
   diver.addClassList("article");
   let headline = document.createElement("h2");
+  let dates = document.createElement("p");
   let para = document.createElement("p");
   let para2 = document.createElement("p");
   let para3 = document.createElement("p");
-  para.addClassList("date");
-  para2.addClassList("date");
-  para3.addClassList("date");
+  dates.addClassList("date");
   let spanner = document.createElement("span");
   spanner.addClassList("expandButton");
 
@@ -143,8 +138,8 @@ function articleCreator(dataObj) {
 
   //add data from our object to our elements - title, date, 1st, 2nd, 3rd
   for(let i=0;i<dataObj.length;i++){
-    addTitle.textContent = dataObj.title[i];
-    addDate.textContent = dataObj.date[i];
+    headline.textContent = dataObj.title[i];
+    dates.textContent = dataObj.date[i];
     addPara1.textContent = dataObj.firstParagraph[i];
     addPara2.textContent = dataObj.secondParagraph[i];
     addPara3.textContent = dataObj.thirdParagraph[i];
@@ -162,3 +157,15 @@ function articleCreator(dataObj) {
   //return our whole div, because it contains everything else
   return diver;
 }
+
+//what is the parent of "article" that we are going to place this in?
+// It is the div "articles" in the html
+let articles = document.querySelector("articles");
+
+//map over the data, adding each component to articles div
+let newArr = data.map((component) => {
+  articles.appendChild(articleCreator(data));
+});
+
+//add new article to array
+//newArr.appendChild;
