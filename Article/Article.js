@@ -102,7 +102,7 @@ const data = [
   Hint: You will need to use createElement more than once here!
 
   Your function should take either an object as it's one argument, or 5 separate arguments mapping to each piece of the data object above.
-
+  
   Step 2: Add an event listener to the expandButton span. This event listener should toggle the class 'article-open' on the 'article' div.
 
   Step 3: return the entire component.
@@ -112,3 +112,56 @@ const data = [
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
 
 */
+
+//Refactored to take in a single object at a time
+function articleCreator(title,date,firstParagraph,secondParagraph,thirdParagraph) {
+
+  let diver = document.createElement("div");
+  diver.classList.add("article");
+  let headline = document.createElement("h2");
+  headline.textContent = title;
+  let dates = document.createElement("p");
+  dates.classList.add("date");
+  dates.textContent = date;
+  let para = document.createElement("p");
+  para.textContent = firstParagraph;
+  let para2 = document.createElement("p");
+  para2.textContent = secondParagraph;
+  let para3 = document.createElement("p");
+  para3.textContent = thirdParagraph;
+  
+  let spanner = document.createElement("span");
+  spanner.classList.add("expandButton"); 
+  spanner.textContent = "Click to Expand Article"; 
+
+  diver.appendChild(headline);
+  diver.appendChild(dates);
+  diver.appendChild(para);
+  diver.appendChild(para2);
+  diver.appendChild(para3);
+  diver.appendChild(spanner);
+
+  spanner.addEventListener("click", ()=> {
+    diver.classList.toggle("article-open");
+  });
+
+  return diver;
+};
+
+let articles = document.querySelector(".articles");
+
+// data.map((component) => {
+//   articles.appendChild(articleCreator(component.title,component.date,component.firstParagraph,component.secondParagraph,component.thirdParagraph));
+// });
+
+//add new article to array
+data.push({title: "my New Article",date: "March 14, 2020",firstParagraph:"dur dur dur",secondParagraph:"dur,dur,dur",thirdParagraph:"dur dur dur"});
+data.push({title: "my New Article2",date: "March 15, 2020",firstParagraph:"Smorkabork",secondParagraph:"dur,dur,dur",thirdParagraph:"dur dur dur"});
+data.push({title: "my New Article3",date: "March 16, 2020",firstParagraph:"This article takes place in the future",secondParagraph:"dur,dur,dur",thirdParagraph:"dur dur dur"});
+//articles.appendChild(articleCreator(data[4].title,data[4].date,data[4].firstParagraph,data[4].secondParagraph,data[4].thirdParagraph));
+//articles.appendChild(articleCreator(data[5].title,data[5].date,data[5].firstParagraph,data[5].secondParagraph,data[5].thirdParagraph));
+//articles.appendChild(articleCreator(data[6].title,data[6].date,data[6].firstParagraph,data[6].secondParagraph,data[6].thirdParagraph));
+
+data.map((component) => {
+  articles.appendChild(articleCreator(component.title,component.date,component.firstParagraph,component.secondParagraph,component.thirdParagraph));
+});
